@@ -28,6 +28,7 @@ const router = new VueRouter({
 router.beforeEach((to, from, next)=>{
   if (from.name === null) {
     let page = to.params.page ? parseInt(to.params.page) - 1 : 0
+    // console.log(page)
     store.dispatch('getTasks', {startItem: page * 10, limit: 10} )
   }
   next()

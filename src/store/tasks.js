@@ -38,17 +38,17 @@ export default {
 			Vue.$db.collection('tasks')
 				.orderBy('createdAt', 'desc')
 				.get()
-				.then((docs)=>{
-					let allDocs = docs.docs
-					totalPages = Math.ceil(docs.docs.length / payload.limit)
+				.then((documents)=>{
+					let allDocs = documents.docs
+					totalPages = Math.ceil(allDocs.length / payload.limit)
 					commit('setTotalPages', totalPages)
-
-					if(payload) {
+					if(payload.startItem) {
 						Vue.$db.collection('tasks')
 							.orderBy('createdAt', 'desc')
 							.startAfter(allDocs[payload.startItem])
 							.limit(payload.limit ? payload.limit : 10)
 							.get().then((docs)=>{
+
 								docs.docs.forEach((doc)=>{
 									let id = doc.id
 									let text = doc.data().text
@@ -56,10 +56,13 @@ export default {
 								})
 							})
 					} else {
-						docs.docs.forEach((doc)=>{
-							let id = doc.id
-							let text = doc.data().text
-							tasks.push({id, text})
+						allDocs.forEach((doc, i)=>{
+							if (i<10) {
+								let id = doc.id
+								let text = doc.data().text
+								tasks.push({id, text})
+							}
+
 						})
 					}
 
@@ -70,6 +73,16 @@ export default {
 					console.error(e)
 					commit('setProcessing', false)
 				})
+		},
+		addTask_() { // для массого добавления однотипных задач
+			for (let i = 1; i <= 50; i++){
+				setTimeout(()=>{
+					Vue.$db.collection('tasks').add({
+						text: 'task-' + i,
+						createdAt: new Date()
+					})
+				},i*500)
+			}
 		},
 		addTask({dispatch}, payload) {
 			Vue.$db.collection('tasks').add({

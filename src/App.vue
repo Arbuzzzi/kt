@@ -31,11 +31,6 @@ export default {
       'getTasks'
     ])
   },
-  mounted(){
-    // let page = this.$route.params.page ? this.$route.params.page - 1 : 0
-    // console.log(this.$route)
-    // this.getTasks({startItem: page * 10, limit: 10})
-  }
 }
 </script>
 
