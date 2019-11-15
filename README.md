@@ -1,5 +1,7 @@
 # kt.team
 
+https://arbuzzzi.github.io/kt/dist
+
 ## Project setup
 ```
 npm install
