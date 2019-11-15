@@ -38,7 +38,6 @@ export default {
 			let totalPages
 			Vue.$db.collection('tasks')
 				.orderBy('createdAt', 'desc')
-				// .limit(41)
 				.get()
 				.then((docs)=>{
 					let allDocs = docs.docs
@@ -73,17 +72,7 @@ export default {
 					commit('setProcessing', false)
 				})
 		},
-		addTask() {
-			for (let i = 1; i <= 50; i++){
-				setTimeout(()=>{
-					Vue.$db.collection('tasks').add({
-						text: 'task-' + i,
-						createdAt: new Date()
-					})
-				},i*500)
-			}
-		},
-		addTask_({dispatch}, payload) {
+		addTask({dispatch}, payload) {
 			Vue.$db.collection('tasks').add({
 				text: payload,
 				createdAt: new Date()

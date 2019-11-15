@@ -28,26 +28,11 @@ const router = new VueRouter({
 
 // eslint-disable-next-line
 router.beforeEach((to, from, next)=>{
-  // console.log(to, from, next)
   if (from.name === null) {
     let page = to.params.page ? parseInt(to.params.page) - 1 : 0
     store.dispatch('getTasks', {startItem: page * 10, limit: 10} )
   }
   next()
-  // store.dispatch('initAuth')
-    // .then(user => {
-    //   if (to.matched.some(route => route.meta.authRequired)) {
-    //     if(user) {
-    //       next()
-    //     } else {
-    //       next('/sign-in')
-    //     }
-    //   } else {
-    //     next()
-    //   }
-    // })
-
-
 })
 
 export default router
