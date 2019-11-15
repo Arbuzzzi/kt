@@ -1,14 +1,24 @@
+<!--suppress JSUnresolvedVariable-->
 <template>
 	<div class="row">
     <div class="col">
-      <div class="card">
-        <div class="card-body">
-          <div
-						class="card-text"
-						contenteditable="true"
-						@blur="blur($event)"
-          >
-            <slot></slot>
+      <div
+				v-if="!processing"
+				class="card"
+			>
+        <div class="card-body p-3">
+          <div class="card-text">
+						<p class="mb-0 d-flex justify-content-between">
+							<span
+								class="p-1"
+								contenteditable="true"
+								@blur="blur($event)"
+							>
+								<slot></slot>
+							</span>
+
+							<slot name="removeCard"></slot>
+						</p>
           </div>
         </div>
       </div>
@@ -22,6 +32,12 @@ export default {
 	data: () => ({
 		text: null
 	}),
+	props: {
+		processing: {
+			default: false,
+			type: Boolean
+		}
+	},
 	methods: {
 		blur(e) {
 			this.$emit('blur', e.target.innerText)
@@ -30,6 +46,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

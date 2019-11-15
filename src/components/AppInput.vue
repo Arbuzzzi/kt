@@ -1,8 +1,7 @@
-<!--suppress JSUnresolvedVariable -->
+<!--suppress JSUnresolvedVariable HtmlFormInputWithoutLabel-->
 <template>
 	<div class="form-group">
 		<label :for="id ? id : uid">{{ label }}</label>
-    <!--suppress HtmlFormInputWithoutLabel -->
 		<input
 			:type="type"
 			class="form-control"
