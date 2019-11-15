@@ -45,7 +45,7 @@ export default {
 					if(payload.startItem) {
 						Vue.$db.collection('tasks')
 							.orderBy('createdAt', 'desc')
-							.startAfter(allDocs[payload.startItem])
+							.startAfter(allDocs[payload.startItem - 1])
 							.limit(payload.limit ? payload.limit : 10)
 							.get().then((docs)=>{
 
