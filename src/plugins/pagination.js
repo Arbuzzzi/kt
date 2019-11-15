@@ -1,3 +1,9 @@
+/**
+ * https://gist.github.com/kottenator/9d936eb3e4e3c3e02598
+ * @param {Number} c - текущий номер страницы
+ * @param {Number} m - всего страниц
+ * @returns {[]} - Selected page 6: [1, "...", 4, 5, 6, 7, 8, "...", 20]
+ */
 export default function (c, m) {
 	let current = c,
 		last = m,
