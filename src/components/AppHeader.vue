@@ -8,7 +8,10 @@
 			/>
 			<button
 				type="submit"
-				class="btn btn-success">Добавить</button>
+				class="btn btn-success"
+				:disabled="processing"
+				:class="processing ? 'disabled' : ''"
+			>Добавить</button>
 		</form>
 	</div>
 </div>
@@ -25,16 +28,19 @@ export default {
 	},
 	computed: {
 		...mapGetters([
+			'processing'
 		])
 	},
 	methods: {
 		...mapActions([
-			'addTask'
+			'addTask',
+			'setProcessing'
 		]),
 		submitTask(e) {
-			e.target.reset()
-			this.$router.push('/')
+			this.setProcessing(true)
 			this.addTask(this.taskValue)
+			this.$router.push('/')
+			e.target.reset()
 		}
 	}
 

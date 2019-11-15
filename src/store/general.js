@@ -7,6 +7,11 @@ export default {
 			state.processing = payload
 		}
 	},
+	actions: {
+		setProcessing({commit}, payload) {
+			commit('setProcessing', payload)
+		}
+	},
 	getters: {
 		processing: state => state.processing
 	},
