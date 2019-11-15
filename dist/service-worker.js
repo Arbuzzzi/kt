@@ -14,7 +14,7 @@
 importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
 importScripts(
-  'precache-manifest.9b47d6c3ad324b3fdedf4872f4d628cc.js'
+  'precache-manifest.4e6b29395b2b6f5615a019509fcb2629.js'
 );
 
 workbox.core.setCacheNameDetails({prefix: 'kt.team'});

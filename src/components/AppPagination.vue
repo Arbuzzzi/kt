@@ -72,11 +72,6 @@ export default {
 			}
 			return returnedClass
 		}
-	},
-	watch: {
-		// '$route' (to) {
-		// 	to.params.page
-		// }
 	}
 }
 

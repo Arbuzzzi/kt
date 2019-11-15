@@ -13,7 +13,6 @@ export default {
 	mutations: {
 		setTasks(state, payload) {
 			state.tasks = payload
-			// Vue.set(state, 'tasks', payload)
 		},
 
 		setTask(state, payload) {
@@ -102,8 +101,6 @@ export default {
 				.delete()
 				.then(()=>{
 					dispatch('getTasks', {startItem: payload.page * 10 - 10, limit: 10})
-					// commit('removeTask', payload.key)
-					// commit('setProcessing', false)
 				}).catch((e)=>{
 					console.error(e)
 					commit('setProcessing', false)
